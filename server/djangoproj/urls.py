@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
+from djangoapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,9 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="Home.html")),
     path('about/', TemplateView.as_view(template_name="About.html")),
     path('contact/', TemplateView.as_view(template_name="Contact.html")),
+    path(route='get_dealers/<str:state>', view=views.get_dealerships, name='get_dealers_by_state'),
+    path('get_dealer_details/<int:dealer_id>/', views.get_dealer_details, name='get_dealer_details'),
+    path('get_dealer_reviews/<int:dealer_id>/', views.get_dealer_reviews, name='get_dealer_reviews'),
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
