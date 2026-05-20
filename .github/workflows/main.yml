@@ -33,7 +33,7 @@ jobs:
       run: |
         pwd
         # This command finds all Python files recursively and runs flake8 on them
-        flake8 server/**/*.py
+        flake8 .
         echo "Linted all the python files successfully"
 
   lint_js:
